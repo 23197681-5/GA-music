@@ -6,6 +6,15 @@ import { NavController } from "ionic-angular";
   templateUrl: "home.html"
 })
 export class HomePage {
+  private top1: string;
+  private top2: string;
+  private top1score: number;
+  private top2score: number;
+  private population: Array<string>;
+  private searchWord: string;
+  private speed: number;
+  genAlgorithmn = this.ga("Blubber", 2000, 0);
+
   constructor(public navCtrl: NavController) {}
   getRandomLetter() {
     return String.fromCharCode(Math.floor(Math.random() * 0xffff));
@@ -22,14 +31,6 @@ export class HomePage {
     }
     return count / length;
   }
-  private top1: string;
-  private top2: string;
-  private top1score: number;
-  private top2score: number;
-  private population: Array<string>;
-  private searchWord: string;
-  private speed: number;
-  genAlgorithmn = this.ga("Blubber", 2000, 0);
 
   ga(searchWord: string, populationSize: number, speed: number) {
     this.speed = speed;

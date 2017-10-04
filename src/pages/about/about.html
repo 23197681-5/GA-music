@@ -7,33 +7,4 @@
 </ion-header>
 
 <ion-content padding>
-  <!-- Waveform selector -->
-  <p>
-    <label for="soundType">Select a waveform:</label> <select name="soundType" id="soundType">
-            <option value="triangle" selected>Triangle</option>
-            <option value="sine">Sine</option>
-            <option value="square">Square</option>
-            <option value="sawtooth">Sawtooth</option>
-        </select>
-
-  </p>
-  <ion-list>
-    <audio-track #audio *ngFor="let track of myTracks" [track]="track" (onFinish)="onTrackFinished($event)">
-      <ion-item>
-        <ion-thumbnail item-left>
-          <img src="{{audio.art}}">
-          <audio-track-play dark [audioTrack]="audio">
-            <ion-spinner></ion-spinner>
-          </audio-track-play>
-        </ion-thumbnail>
-        <div item-content style="width:100%">
-
-          <audio-track-progress-bar dark duration progress [audioTrack]="audio" [ngStyle]="{visibility: audio.completed > 0 ? 'visible' : 'hidden'}"></audio-track-progress-bar>
-        </div>
-      </ion-item>
-    </audio-track>
-  </ion-list>
-  <!-- Keyboard placeholder -->
-  <div id="keyboard">
-  </div>
 </ion-content>

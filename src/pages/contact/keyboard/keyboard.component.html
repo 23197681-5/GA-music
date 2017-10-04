@@ -1,0 +1,13 @@
+<ul class="keyboard">
+  <li
+    *ngFor="let item of notes"
+    class="key" 
+    [ngClass]="{
+      white: item.noteName.indexOf('#') === -1,
+      black: item.noteName.indexOf('#') !== -1,
+      playing: item.sound.pressed
+    }"
+    (click)="onClick.emit()"
+    [attr.data-key]="item.keyCode">
+  </li>
+</ul>

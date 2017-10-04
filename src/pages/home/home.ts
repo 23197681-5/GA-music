@@ -14,7 +14,7 @@ export class HomePage {
   private population: Array<string>;
   private searchWord: string;
   private speed: number;
-  genAlgorithmn = this.ga("Blubber", 2000, 0);
+  genAlgorithmn = this.ga("CDAM", 2000, 0);
 
   constructor(public navCtrl: NavController) {}
   getRandomLetter() {

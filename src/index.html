@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <title>Ionic App</title>
@@ -10,7 +11,7 @@
   <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#4e8ef7">
-  
+
   <!-- add to homescreen for ios -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -28,12 +29,23 @@
   </script>-->
 
   <link href="build/main.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="piano_style.css"> -->
+  <title>Piano Keyboard</title>
+  <script>
+    var _gaq = [['_setAccount', 'UA-20257902-1'], ['_trackPageview']]; (function (d, t) { var g = d.createElement(t), s = d.getElementsByTagName(t)[0]; g.async = 1; g.src = '//www.google-analytics.com/ga.js'; s.parentNode.insertBefore(g, s) }(document, 'script'))
+  </script>
+
+
+
 
 </head>
-<body>
 
-  <!-- Ionic's root component and where the app will load -->
+<body>
   <ion-app></ion-app>
+
+
+  <audio src="http://kolber.github.io/audiojs/demos/mp3/juicy.mp3" preload="auto"></audio>
+
 
   <!-- The polyfills js is generated during the build process -->
   <script src="build/polyfills.js"></script>
@@ -46,4 +58,5 @@
   <script src="build/main.js"></script>
 
 </body>
+
 </html>

@@ -1,0 +1,10 @@
+<div class="waveform-control">
+  <label>
+    Waveform
+    <select (change)="handleOnChange($event)">
+      <option *ngFor="let option of waveforms" value="{{ option }}">
+        {{ option }}
+      </option>
+    </select>
+  </label>
+</div>

@@ -1,6 +1,7 @@
 export default class piano {
   run() {
     // WebFontConfig = { google: { families: [ 'Open+Sans:400,300,600,700:latin' ] } };
+
     (function() {
       var wf = document.createElement("script");
       wf.src =
@@ -152,65 +153,79 @@ export default class piano {
 
     (function() {
       for (var x in music) {
-        var el = document.getElementById(music[x].id + "-player");
-        el.className = music[x].sharp == true ? "black" : "white";
+        if (music[x] !== undefined) {
+          var el = document.getElementById(music[x].id + "-player");
+          el.className = music[x].sharp == true ? "black" : "white";
+        }
       }
     })();
 
     document.onkeypress = function(event) {
-      var x: any = document.getElementById(
-        music[event.keyCode || event.charCode].id
-      );
-      if (music[event.keyCode || event.charCode].sharp)
-        document.getElementById(
+      if (
+        event.target !== undefined &&
+        (<any>event.target).hasAttribute("id")
+      ) {
+        var x: any = document.getElementById(
+          music[event.keyCode || event.charCode].id
+        );
+        if (music[event.keyCode || event.charCode].sharp)
+          document.getElementById(
+            music[event.keyCode || event.charCode].id + "-player"
+          ).className =
+            "black";
+        else
+          document.getElementById(
+            music[event.keyCode || event.charCode].id + "-player"
+          ).className =
+            "white";
+        var y = document.getElementById(
           music[event.keyCode || event.charCode].id + "-player"
-        ).className =
-          "black";
-      else
-        document.getElementById(
-          music[event.keyCode || event.charCode].id + "-player"
-        ).className =
-          "white";
-      var y = document.getElementById(
-        music[event.keyCode || event.charCode].id + "-player"
-      );
-      var c = y.getAttribute("class");
-      y.setAttribute("class", c + " typed");
-      setTimeout(function() {
-        return y.setAttribute("class", c);
-      }, 200);
-      x.volume = 1;
-      x.currentTime = 0;
-      x.play();
+        );
+        var c = y.getAttribute("class");
+        y.setAttribute("class", c + " typed");
+        setTimeout(function() {
+          return y.setAttribute("class", c);
+        }, 200);
+        x.volume = 1;
+        x.currentTime = 0;
+        x.play();
+      }
     };
 
     (<any>document.getElementById("switch-chars").children[0]).style.display =
       "none";
 
     document.onclick = function(event) {
-      if ((<any>event.target).id == "switch-chars") {
-        var keys = document.getElementsByClassName("keys");
-        var etc = (<any>event.target).children;
-        var k: any = document.getElementsByClassName("keys");
-        var n: any = document.getElementsByClassName("notes");
-        etc[0].style.display =
-          etc[0].style.display == "none" ? "block" : "none";
-        etc[1].style.display =
-          etc[0].style.display == "none" ? "block" : "none";
-        for (var i = 0; i < k.length; i++) {
-          k[i].style.display =
+      if (
+        event.target !== undefined &&
+        (<any>event.target).hasAttribute("id")
+      ) {
+        if ((<any>event.target).id == "switch-chars") {
+          var keys = document.getElementsByClassName("keys");
+          var etc = (<any>event.target).children;
+          var k: any = document.getElementsByClassName("keys");
+          var n: any = document.getElementsByClassName("notes");
+          etc[0].style.display =
             etc[0].style.display == "none" ? "block" : "none";
-          n[i].style.display =
-            etc[1].style.display == "none" ? "block" : "none";
+          etc[1].style.display =
+            etc[0].style.display == "none" ? "block" : "none";
+          for (var i = 0; i < k.length; i++) {
+            k[i].style.display =
+              etc[0].style.display == "none" ? "block" : "none";
+            n[i].style.display =
+              etc[1].style.display == "none" ? "block" : "none";
+          }
+          return;
         }
-        return;
+        var d = (<any>event.target).dataset.keycode;
+        if (music[d] !== undefined) {
+          if (!document.getElementById(music[d].id)) return;
+          var x: any = document.getElementById(music[d].id);
+          x.volume = 1;
+          x.currentTime = 0;
+          x.play();
+        }
       }
-      var d = (<any>event.target).dataset.keycode;
-      if (!document.getElementById(music[d].id)) return;
-      var x: any = document.getElementById(music[d].id);
-      x.volume = 1;
-      x.currentTime = 0;
-      x.play();
     };
   }
 }

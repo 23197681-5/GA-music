@@ -31,8 +31,7 @@ export class HomePage {
       }
     }
 
-    $("p").html("<span>" + text + "</span>");
-    $("p>span").click(function() {
+    $("li>span").click(function() {
       $(this).css("background-color", "yellow");
     });
 
@@ -100,7 +99,11 @@ export class HomePage {
       }
     }
   }
-  public play() {}
+  public play() {
+    $("li>span").click(function() {
+      $(this).css("background-color", "yellow");
+    });
+  }
   public run() {
     this.findBestCandidates();
     this.generateNextGeneration();

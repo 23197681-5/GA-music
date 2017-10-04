@@ -18,18 +18,14 @@ export class AboutPage {
     // plugin won't preload data by default, unless preload property is defined within json object - defaults to 'none'
     this.myTracks = [
       {
-        src:
-          "https://archive.org/download/JM2013-10-05.flac16/V0/jm2013-10-05-t12-MP3-V0.mp3",
-        artist: "John Mayer",
-        title: "Why Georgia",
+        src: "https://archive.org/download/J.mp3",
+        artist: "John ",
+        title: "Why ",
         art: "img/johnmayer.jpg",
         preload: "metadata" // tell the plugin to preload metadata such as duration for this track, set to 'none' to turn off
       },
       {
-        src:
-          "https://archive.org/download/JM2013-10-05.flac16/V0/jm2013-10-05-t30-MP3-V0.mp3",
-        artist: "John Mayer",
-        title: "Who Says",
+        src: "../assets/midia/293-D.mp3",
         art: "img/johnmayer.jpg",
         preload: "metadata" // tell the plugin to preload metadata such as duration for this track,  set to 'none' to turn off
       }
@@ -153,7 +149,7 @@ export class AboutPage {
         var playNote = function(event) {
           event.preventDefault();
 
-          var keyCode = event.keyCode || event.target.getAttribute("data-key");
+          var keyCode = 68; //event.keyCode || event.target.getAttribute("data-key");
 
           if (typeof notesByKeyCode[keyCode] !== "undefined") {
             // Pipe sound to output (AKA speakers)

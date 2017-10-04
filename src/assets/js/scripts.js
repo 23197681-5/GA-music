@@ -1275,22 +1275,22 @@ window.Zepto = Zepto, void 0 === window.$ && (window.$ = Zepto), function(t) {
 }(), function() {
     var notes = {
         "1C": new Howl({
-            urls: [ "assets/midia/261-C.mp3" ]
+            urls: [ "../assets/midia/261-C.mp3" ]
         }),
         "1Cs": new Howl({
-            urls: [ "assets/midia/277-C-sharp.mp3" ]
+            urls: [ "../assets/midia/277-C-sharp.mp3" ]
         }),
         "1D": new Howl({
-            urls: [ "assets/midia/293-D.mp3" ]
+            urls: [ "../assets/midia/293-D.mp3" ]
         }),
         "1Ds": new Howl({
-            urls: [ "assets/midia/311-D-sharp.mp3" ]
+            urls: [ "../assets/midia/311-D-sharp.mp3" ]
         }),
         "1E": new Howl({
-            urls: [ "assets/midia/329-E.mp3" ]
+            urls: [ "../assets/midia/329-E.mp3" ]
         }),
         "1F": new Howl({
-            urls: [ "assets/midia/349-F.mp3" ]
+            urls: [ "../assets/midia/349-F.mp3" ]
         }),
         "1Fs": new Howl({
             urls: [ "assets/midia/369F-sharp.mp3" ]

@@ -10,7 +10,7 @@
 #GA learning to play piano
 
 A genetic algorithm that learn how to play piano.
- <br> using [Luiz Felipe Tartarotti Fialho piano's  ](https://github.com/LFeh/piano-keyboard.git)
+ <br> using [Chris Woelk piano's  ](https://codepen.io/cawoelk/pen/GJpMdE )
 
 ### Runing:
 

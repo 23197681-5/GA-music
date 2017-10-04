@@ -1,12 +1,14 @@
 import { Component } from "@angular/core";
 import { NavController } from "ionic-angular";
 import * as $ from "jquery";
+import Piano from "../../services/piano";
 
 @Component({
   selector: "page-home",
   templateUrl: "home.html"
 })
 export class HomePage {
+  piano = new Piano();
   private top1: string;
   private top2: string;
   private top1score: number;
@@ -103,6 +105,9 @@ export class HomePage {
     $(".1C").click(function() {
       $(this).css("background-color", "yellow");
     });
+  }
+  public startPiano() {
+    this.piano.run();
   }
   public run() {
     this.findBestCandidates();

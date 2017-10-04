@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { NavController } from "ionic-angular";
+import * as $ from "jquery";
 
 @Component({
   selector: "page-home",
@@ -29,6 +30,12 @@ export class HomePage {
         count += 100;
       }
     }
+
+    $("p").html("<span>" + text + "</span>");
+    $("p>span").click(function() {
+      $(this).css("background-color", "yellow");
+    });
+
     return count / length;
   }
 
@@ -93,7 +100,7 @@ export class HomePage {
       }
     }
   }
-
+  public play() {}
   public run() {
     this.findBestCandidates();
     this.generateNextGeneration();

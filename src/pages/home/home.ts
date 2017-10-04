@@ -100,7 +100,7 @@ export class HomePage {
     }
   }
   public play() {
-    $("li>span").click(function() {
+    $(".1C").click(function() {
       $(this).css("background-color", "yellow");
     });
   }

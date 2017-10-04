@@ -19,6 +19,7 @@ export class HomePage {
   genAlgorithmn = this.ga("CDAM", 2000, 0);
 
   constructor(public navCtrl: NavController) {}
+
   getRandomLetter() {
     return String.fromCharCode(Math.floor(Math.random() * 0xffff));
   }
@@ -106,7 +107,7 @@ export class HomePage {
       $(this).css("background-color", "yellow");
     });
   }
-  public startPiano() {
+  ionViewDidLoad() {
     this.piano.run();
   }
   public run() {

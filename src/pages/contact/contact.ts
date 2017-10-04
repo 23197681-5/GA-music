@@ -1,7 +1,5 @@
 import { Component } from "@angular/core";
-import { Alert, NavController } from "ionic-angular";
-
-import * as _ from "lodash";
+import { NavController } from "ionic-angular";
 
 @Component({
   selector: "page-contact",

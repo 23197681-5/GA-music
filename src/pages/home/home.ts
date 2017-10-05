@@ -107,30 +107,14 @@ export class HomePage {
       $(this).css("background-color", "yellow");
     });
   }
-
-  simulateKeyPress() {
-    // TODO: key as argument
-    var key = "g";
-    var keyboardEvent = document.createEvent("KeyboardEvent");
-    var initMethod =
-      typeof keyboardEvent.initKeyboardEvent !== "undefined"
-        ? "initKeyboardEvent"
-        : "initKeyEvent";
-    var charCodeArg = key.charCodeAt(0);
-
-    keyboardEvent[initMethod](
-      "keydown", // event type : keydown, keyup, keypress
-      true, // bubbles
-      true, // cancelable
-      window, // viewArg: should be window
-      false, // ctrlKeyArg
-      false, // altKeyArg
-      false, // shiftKeyArg
-      false, // metaKeyArg
-      40, // keyCodeArg : unsigned long the virtual key code, else 0
-      charCodeArg // charCodeArgs : unsigned long the Unicode character associated with the depressed key, else 0
-    );
-    document.dispatchEvent(keyboardEvent);
+  public playSomeMusic(char) {
+    var character = "g";
+    var evt: any = document.createEvent("KeyboardEvent");
+    character.charCodeAt(0);
+    this.piano.playSound(character.charCodeAt(0));
+  }
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
   ionViewDidLoad() {
     this.piano.run();
@@ -145,6 +129,6 @@ export class HomePage {
     }
 
     console.log(this.top1);
-    this.simulateKeyPress();
+    this.playSomeMusic("g");
   }
 }

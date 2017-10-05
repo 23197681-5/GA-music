@@ -16,12 +16,12 @@ export class HomePage {
   private population: Array<string>;
   private searchWord: string;
   private speed: number;
-  genAlgorithmn = this.ga("CDAM", 2000, 0);
+  genAlgorithmn = this.ga("GCDFGCDFGCDFG", 2000, 7110);
 
   constructor(public navCtrl: NavController) {}
 
   getRandomLetter() {
-    return String.fromCharCode(Math.floor(Math.random() * 0xffff));
+    return String.fromCharCode(Math.floor(Math.random() * (125 - 48 + 1)) + 48);
   }
 
   similarString(x, y) {
@@ -43,7 +43,16 @@ export class HomePage {
 
   ga(searchWord: string, populationSize: number, speed: number) {
     this.speed = speed;
-    this.searchWord = searchWord;
+    //C – D – E – F – G – A – B
+    //f h j l q e r
+    this.searchWord = searchWord
+      .replace(/C/g, "f")
+      .replace(/D/g, "h")
+      .replace(/E/g, "j")
+      .replace(/F/g, "l")
+      .replace(/G/g, "q")
+      .replace(/A/g, "e")
+      .replace(/B/g, "r");
     this.population = [];
 
     this.initializePopulation(populationSize);
@@ -107,19 +116,13 @@ export class HomePage {
       $(this).css("background-color", "yellow");
     });
   }
-  public playSomeMusic(char) {
-    var character = "g";
-    var evt: any = document.createEvent("KeyboardEvent");
-    character.charCodeAt(0);
-    this.piano.playSound(character.charCodeAt(0));
-  }
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
   ionViewDidLoad() {
     this.piano.run();
   }
-  public run() {
+  public async run() {
     this.findBestCandidates();
     this.generateNextGeneration();
 
@@ -129,6 +132,10 @@ export class HomePage {
     }
 
     console.log(this.top1);
-    this.playSomeMusic("g");
+    console.log(this.top1.length);
+    for (var i = 0; i < this.top1.length - 1; i++) {
+      await this.piano.playSound(this.top1.charCodeAt(i));
+      await this.delay(755);
+    }
   }
 }

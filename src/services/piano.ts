@@ -192,9 +192,6 @@ export default class piano {
       }
     };
 
-    (<any>document.getElementById("switch-chars").children[0]).style.display =
-      "none";
-
     document.onclick = function(event) {
       if (
         event.target !== undefined &&
@@ -252,22 +249,23 @@ export default class piano {
         }
       }
     })();
-
-    var x: any = document.getElementById(music[keyCode].id);
-    if (music[keyCode].sharp)
-      document.getElementById(music[keyCode].id + "-player").className =
-        "black";
-    else
-      document.getElementById(music[keyCode].id + "-player").className =
-        "white";
-    var y = document.getElementById(music[keyCode].id + "-player");
-    var c = y.getAttribute("class");
-    y.setAttribute("class", c + " typed");
-    setTimeout(function() {
-      return y.setAttribute("class", c);
-    }, 200);
-    x.volume = 1;
-    x.currentTime = 0;
-    x.play();
+    if (music[keyCode] !== undefined) {
+      var x: any = document.getElementById(music[keyCode].id);
+      if (music[keyCode].sharp)
+        document.getElementById(music[keyCode].id + "-player").className =
+          "black";
+      else
+        document.getElementById(music[keyCode].id + "-player").className =
+          "white";
+      var y = document.getElementById(music[keyCode].id + "-player");
+      var c = y.getAttribute("class");
+      y.setAttribute("class", c + " typed");
+      setTimeout(function() {
+        return y.setAttribute("class", c);
+      }, 200);
+      x.volume = 1;
+      x.currentTime = 0;
+      x.play();
+    }
   }
 }

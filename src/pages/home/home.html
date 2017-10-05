@@ -6,7 +6,7 @@
 
 <ion-content padding>
 
-  <i>Music is a moral law. It gives soul to the universe, wings to the mind, flight to the imagination, and charm and gaiety to life and to everything.</i>
+  <i>Music is a moral law.</i>
 
 
 
@@ -291,12 +291,10 @@
       </li>
     </ul>
     <h2 class='switch-to'>Piano</h2>
-    <button class='clear-fix' id='switch-chars'>
-      <div class='to-keys'>Keyboard Letters</div>
-      <div class='to-notes'>Music Notes</div>
-    </button>
-    <button ion-button class='clear-fix' (click)="playSomeMusic('C')">
-      run GA
+
+    <button ion-button class='clear-fix' (click)="run()">
+        <div class='to-notes'>Run GA</div>
+        
     </button>
   </div>
 

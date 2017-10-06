@@ -16,7 +16,7 @@ import { IonicAudioModule } from "ionic-audio";
   declarations: [MyApp, AboutPage, ContactPage, HomePage, TabsPage],
   imports: [
     BrowserModule,
-    IonicAudioModule.forRoot(),
+    // IonicAudioModule.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

@@ -1,6 +1,5 @@
 import { NavController } from "ionic-angular";
 import { Component, Provider } from "@angular/core";
-import { AudioProvider } from "ionic-audio";
 
 @Component({
   selector: "page-about",
@@ -14,27 +13,10 @@ export class AboutPage {
   myTracks: any[];
   allTracks: any[];
 
-  constructor(private _audioProvider: AudioProvider) {
-    // plugin won't preload data by default, unless preload property is defined within json object - defaults to 'none'
-    this.myTracks = [
-      {
-        src: "https://archive.org/download/J.mp3",
-        artist: "John ",
-        title: "Why ",
-        art: "img/johnmayer.jpg",
-        preload: "metadata" // tell the plugin to preload metadata such as duration for this track, set to 'none' to turn off
-      },
-      {
-        src: "../assets/midia/293-D.mp3",
-        art: "img/johnmayer.jpg",
-        preload: "metadata" // tell the plugin to preload metadata such as duration for this track,  set to 'none' to turn off
-      }
-    ];
-  }
+  constructor() {}
 
   ngAfterContentInit() {
     // get all tracks managed by AudioProvider so we can control playback via the API
-    this.allTracks = this._audioProvider.tracks;
   }
 
   playSelectedTrack() {

@@ -24,6 +24,7 @@ export class HomePage {
   private population: Array<string>;
   private searchWord: string;
   private speed: number;
+  
   genAlgorithmn = this.ga("GCDFGCDFGCDFG", 2000, 7110);
 
   constructor(public navCtrl: NavController) {}
@@ -34,9 +35,13 @@ export class HomePage {
 
   similarString(x, y) {
     var count = 0;
+	//Armazena o tamanho do elemento
     var length = Math.min(x.length, y.length);
     for (var i = 0; i < length; i++) {
+	  //Pega o valor absoluto da subtração do código dos 
+	  //caracteres e subtrai do valor acumulado
       count -= Math.abs(x.charCodeAt(i) - y.charCodeAt(i));
+	  //Verifica se são os mesmos caracteres
       if (x.substring(i, i + 1) == y.substring(i, i + 1)) {
         count += 100;
       }
@@ -48,8 +53,14 @@ export class HomePage {
 
     return count / length;
   }
-
+  
+  /*
+  * searchWord: Elemento inicial para base da geração da população
+  *	populationSize: Tamanho da população a ser gerada;
+  * speed: Velocidade em que as notas são tocadas no piano
+  */
   ga(searchWord: string, populationSize: number, speed: number) {
+	  
     this.speed = speed;
     //C – D – E – F – G – A – B
     //f h j l q e r
@@ -104,7 +115,9 @@ export class HomePage {
   private generateNextGeneration() {
     // Generate new strings
     for (var i = 0; i < this.population.length; i++) {
+	  //Calcula o ponto de corte da string para fazer a geração do filho
       var splitAt = Math.floor(Math.random() * this.searchWord.length);
+	  //Pega os dois melhores elementos da geração anterior para ser os pais 
       this.population[i] =
         this.top1.substring(0, splitAt) +
         this.top2.substring(splitAt, this.searchWord.length);
@@ -134,6 +147,8 @@ export class HomePage {
     this.findBestCandidates();
     this.generateNextGeneration();
 
+	this.findBestCandidates();
+	
     // chekc if we already have a perfect candidate
     if (this.fitness(this.top1) !== 100) {
       setTimeout(this.run.bind(this), this.speed);

@@ -147,7 +147,7 @@ export class HomePage {
     this.findBestCandidates();
     this.generateNextGeneration();
 
-	this.findBestCandidates();
+	//this.findBestCandidates();
 	
     // chekc if we already have a perfect candidate
     if (this.fitness(this.top1) !== 100) {

@@ -1,14 +1,22 @@
-import { Component } from "@angular/core";
 import { NavController } from "ionic-angular";
 import * as $ from "jquery";
 import Piano from "../../services/piano";
+import { Chart } from "chart.js";
+import { Component, ViewChild } from "@angular/core";
 
+export class AppModule {}
 @Component({
   selector: "page-home",
   templateUrl: "home.html"
 })
 export class HomePage {
+  @ViewChild("barCanvas") barCanvas;
+
+  barChart: any;
   piano = new Piano();
+  ger = 0;
+  labels = [];
+  series = [];
   private top1: string;
   private top2: string;
   private top1score: number;
@@ -132,7 +140,51 @@ export class HomePage {
     }
 
     console.log(this.top1);
-    console.log(this.top1.length);
+    console.log(this.fitness(this.top1));
+
+    this.ger++;
+    this.labels.push("" + this.ger);
+    this.series.push(this.fitness(this.top1));
+    this.barChart = new Chart(this.barCanvas.nativeElement, {
+      type: "bar",
+      data: {
+        labels: this.labels,
+        datasets: [
+          {
+            label: "# of Votes",
+            data: this.series,
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 206, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(153, 102, 255, 0.2)",
+              "rgba(255, 159, 64, 0.2)"
+            ],
+            borderColor: [
+              "rgba(255,99,132,1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(75, 192, 192, 1)",
+              "rgba(153, 102, 255, 1)",
+              "rgba(255, 159, 64, 1)"
+            ],
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ]
+        }
+      }
+    });
     for (var i = 0; i < this.top1.length - 1; i++) {
       await this.piano.playSound(this.top1.charCodeAt(i));
       await this.delay(755);

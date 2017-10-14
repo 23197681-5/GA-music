@@ -10,7 +10,7 @@
 ## GA-music
 
 A genetic algorithm that learns how to play piano.
- <br> using [Chris Woelk piano's  ](https://codepen.io/cawoelk/pen/GJpMdE )
+ <br> Uses the [Chris Woelk piano's  ](https://codepen.io/cawoelk/pen/GJpMdE )
 
 ### Runing:
 
